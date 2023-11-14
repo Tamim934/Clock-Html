@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="hour"></div>
+        <div class="minute"></div>
+        <div class="second"></div>
+      </div>
+      <script>
+        // Get the clock elements
+        const hour = document.querySelector(".hour");
+        const minute = document.querySelector(".minute");
+        const second = document.querySelector(".second");
+      
+        // Set the initial time
+        setTime();
+      
+        // Update the time every second
+        setInterval(setTime, 1000);
+      
+        // Function to set the time
+        function setTime() {
+          // Get the current date and time
+          const date = new Date();
+          const hours = date.getHours();
+          const minutes = date.getMinutes();
+          const seconds = date.getSeconds();
+      
+          // Calculate the rotation angles for the clock hands
+          const hourAngle = (hours % 12) * 30 + minutes * 0.5;
+          const minuteAngle = minutes * 6 + seconds * 0.1;
+          const secondAngle = seconds * 6;
+      
+          // Rotate the clock hands accordingly
+          hour.style.transform = `rotate(${hourAngle}deg)`;
+          minute.style.transform = `rotate(${minuteAngle}deg)`;
+          second.style.transform = `rotate(${secondAngle}deg)`;
+        }
+      </script>
+      
+    
+</body>
+</html>
